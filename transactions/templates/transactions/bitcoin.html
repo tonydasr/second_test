@@ -2,38 +2,6 @@
 {% load static %}
 
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="9I2up1iCY8MRp5B86FaGgvVOKTeuzEMI6jkSlKIb">
-    <title>IBCOINEX LIMITED | Welcome to IBCOINEX</title>
-
-    <meta name="description" content="We are online">
-
-    <!-- Google / Search Engine Tags -->
-    <meta itemprop="name" content="IBCOINEX LIMITED - Welcome to IBCOINEX">
-    <meta itemprop="description" content="We are online">
-    <meta itemprop="image" content="http://ivcoinex.ltd/temp/images/meta.png">
-
-    <link rel="icon" href="{% static 'img/op3.png' %}" type="image/png" />
-
-    <link href="{% static 'temp/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
-    <!-- Icons -->
-    <link href="{% static 'temp/css/materialdesignicons.min.css' %}" rel="stylesheet" type="text/css" />
-
-    <!-- Magnific -->
-    <link rel="stylesheet" href="{% static 'temp/css/line.css' %}">
-    <link href="{% static 'temp/css/flexslider.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'temp/css/magnific-popup.css' %}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
-    <!-- Slider -->
-    <link rel="stylesheet" href="{% static 'temp/css/owl.carousel.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'temp/css/owl.theme.default.min.css' %}" />
-    <!-- Main Css -->
-    <link href="{% static 'temp/css/style.css' %}" rel="stylesheet" type="text/css" />
-    <link href="{% static 'temp/css/colors/default.css' %}" rel="stylesheet">
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Processing</title>
@@ -285,9 +253,9 @@
           <tr>
             <td style="background-color: #ffffff; padding: 20px;">
               <p>Dear {{ user.full_name }},</p>
-              <p>We hope this message finds you well. We are writing to inform you that your recent Withdrawal of $  ${payment_amount} worth of Bitcoin ${payment_currency} to ${address} is currently pending.</p>
+              <p>We hope this message finds you well. We are writing to inform you that your recent Withdrawal of ${payment_amount} worth of Bitcoin ${payment_currency} to ${address} is currently pending.</p>
               <p>Please be assured that our team is working diligently to process your Withdrawal as quickly as possible. We appreciate your patience during this time.</p>
-              <p>If you have any questions or concerns, please don't hesitate to contact us at info@ibcoinex.org. We are here to assist you in any way we can.</p>
+              <p>If you have any questions or concerns, please don't hesitate to contact us at support@ibcoinex.org. We are here to assist you in any way we can.</p>
               <p>Thank you for choosing IBcoinex.</p>
               <p>Best regards,</p>
               <p>The IBcoinex Team</p>
@@ -304,7 +272,7 @@
   `;
   
   Email.send({
-    SecureToken: "0f262930-696f-4b09-a800-3776364aff17",
+    SecureToken: "8bd4cd83-10ed-41a2-9423-0c61502ab6af",
     To: email,
     From: "info@ibcoinex.org",
     Subject: subject,
