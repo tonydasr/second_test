@@ -33,7 +33,7 @@ class User(AbstractUser):
         })
 
     email = models.EmailField(unique=True, null=False, blank=False)
-    contact_no = models.CharField(max_length=30, unique=False, blank=True, null=True, default=0000000000000)
+    contact_no = models.CharField(max_length=30, unique=False, blank=True, null=True, default="+")
 
     objects = UserManager()
 
