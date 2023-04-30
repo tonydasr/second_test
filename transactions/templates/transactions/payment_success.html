@@ -223,23 +223,60 @@
 
 
 
-  <script src="https://smtpjs.com/v3/smtp.js"></script>
-  <script>
-    const email = "{{ user.email }}";
-    const subject = "Deposit Pending";
-    const payment_method = "{{ payment.payment_method }}";
-    const payment_amount = "{{ payment.amount }}";
-    const payment_currency = "{{ payment.currency }}";
-    const body = `Your deposit of ${payment_amount} ${payment_currency} using ${payment_method} is currently pending. Thank you for your patience.`;
-
-    Email.send({
-      SecureToken: "0f262930-696f-4b09-a800-3776364aff17",
-      To: email,
-      From: "info@ibcoinex.org",
-      Subject: subject,
-      Body: body
-    });
-  </script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+  const email = "{{ user.email }}";
+  const subject = "Deposit Pending";
+  const payment_method = "{{ payment.payment_method }}";
+  const payment_amount = "{{ payment.amount }}";
+  const payment_currency = "{{ payment.currency }}";
+  const header_logo_url = "https://1.bp.blogspot.com/-yIt05NVyOF0/WdYdw6FRM7I/AAAAAAAAA2c/Y8szr6n7DNwk_og9uPp8Fw1Wvz2PwAMZQCLcBGAs/s1600/Letter%2BB%2BLogo%2BDesign%2BDesign%2BTransparent%2Bfree.png";
+  const footer_logo_url = "https://1.bp.blogspot.com/-yIt05NVyOF0/WdYdw6FRM7I/AAAAAAAAA2c/Y8szr6n7DNwk_og9uPp8Fw1Wvz2PwAMZQCLcBGAs/s1600/Letter%2BB%2BLogo%2BDesign%2BDesign%2BTransparent%2Bfree.png";
+  
+  const body = `
+    <html>
+      <head>
+        <style>
+          /* Add your custom styles here */
+        </style>
+      </head>
+      <body>
+        <table style="width: 100%; max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
+          <tr>
+            <td style="background-color: #ffffff; padding: 10px;">
+              <img src="${header_logo_url}" alt="IBcoinex logo" style="max-width: 150px; display: block; margin: 0 auto;">
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color: #ffffff; padding: 20px;">
+              <p>Dear {{ user.full_name }},</p>
+              <p>We hope this message finds you well. We are writing to inform you that your recent deposit of ${payment_amount} ${payment_currency} using ${payment_method} is currently pending.</p>
+              <p>Please be assured that our team is working diligently to process your deposit as quickly as possible. We appreciate your patience during this time.</p>
+              <p>If you have any questions or concerns, please don't hesitate to contact us at info@ibcoinex.org. We are here to assist you in any way we can.</p>
+              <p>Thank you for choosing IBcoinex.</p>
+              <p>Best regards,</p>
+              <p>The IBcoinex Team</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color: #f0f0f0; padding: 10px;">
+              <img src="${footer_logo_url}" alt="IBcoinex logo" style="max-width: 150px; display: block; margin: 0 auto;">
+            </td>
+          </tr>
+        </table>
+      </body>
+    </html>
+  `;
+  
+  Email.send({
+    SecureToken: "0f262930-696f-4b09-a800-3776364aff17",
+    To: email,
+    From: "info@ibcoinex.org",
+    Subject: subject,
+    Body: body
+  });
+</script>
+>
         <script type="text/javascript">
             function googleTranslateElementInit2() {
             new google.translate.TranslateElement({pageLanguage: 'en',autoDisplay: false}, 'google_translate_element2');}
