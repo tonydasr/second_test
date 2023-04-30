@@ -1,0 +1,343 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ title }} | {{ block.super }}{% endblock %}
+
+{% block content %}
+  {% include "core/messages.html" %}
+
+  <h2>{{ title }}</h2><hr>
+  <form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <h3>Account Information</h3>
+    <label for="{{ user_form.username.id_for_label }}">Username:</label>
+    {{ user_form.username }}
+    <br>
+    <label for="{{ user_form.first_name.id_for_label }}">First Name:</label>
+    {{ user_form.first_name }}
+    <br>
+    <label for="{{ user_form.last_name.id_for_label }}">Last Name:</label>
+    {{ user_form.last_name }}
+    <br>
+    <label for="{{ user_form.email.id_for_label }}">Email:</label>
+    {{ user_form.email }}
+    <br>
+    <label for="{{ user_form.contact_no.id_for_label }}">Contact Number:</label>
+    {{ user_form.contact_no }}
+    <br>
+    <label for="{{ user_form.password1.id_for_label }}">Password:</label>
+    {{ user_form.password1 }}
+    <br>
+    <label for="{{ user_form.password2.id_for_label }}">Confirm Password:</label>
+    {{ user_form.password2 }}
+    <br>
+
+    <h3>Account Details</h3>
+    <label for="{{ account_form.gender.id_for_label }}">Gender:</label>
+    {{ account_form.gender }}
+    <br>
+
+    <h3>User Address</h3>
+    <label for="{{ address_form.country.id_for_label }}">Country:</label>
+    {{ address_form.country }}
+    <br>
+
+    <input class="btn btn-success" type="submit" value="Submit">
+  </form>
+{% endblock %}
+<<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Processing</title>
+</head>
+<body>
+  <style>
+      primary-col = #6C7BEE
+
+  .bg {
+    
+    background-color: primary-col;
+    width: 480px;
+    overflow: hidden;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 40px;
+    font-family: 'Roboto';
+    margin-top: 40px;
+    
+  }
+
+  .card {
+    
+    background-color: white;
+    width: 100%;
+    float: left;
+    margin-top: 40px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 80px 30px 25px 30px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+    
+    &__success {
+      
+      position: absolute;
+      top: -50px;
+      left: 145px;
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+      background-color: #60c878;
+      border: 5px solid white;
+      
+      i {
+        
+        color: white;
+        line-height: 100px;
+        font-size: 45px;
+        
+      }
+      
+    }
+    
+    &__msg {
+      
+      text-transform: uppercase;
+      color: #55585b;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 5px;
+      
+    }
+    
+    &__submsg {
+      
+      color: #959a9e;
+      font-size: 16px;
+      font-weight: 400;
+      margin-top: 0px;
+      
+    }
+    
+    &__body {
+      
+      background-color: #f8f6f6;
+      border-radius: 4px;
+      width: 100%;
+      margin-top: 30px;
+      float: left;
+      box-sizing: border-box;
+      padding: 30px;
+      
+    }
+    
+    &__avatar {
+      
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      display: inline-block;
+      margin-right: 10px;
+      position: relative;
+      top: 7px;
+      
+    }
+    
+    &__recipient-info {
+      
+      display: inline-block;
+      
+    }
+    
+    &__recipient {
+      
+      color: #232528;
+      text-align: left;
+      margin-bottom: 5px;
+      font-weight: 600;
+      
+    }
+    
+    &__email {
+      
+      color: #838890;
+      text-align: left;
+      margin-top: 0px;
+      
+    }
+    
+    &__price {
+      
+      color: #232528;
+      font-size: 70px;
+      margin-top: 25px;
+      margin-bottom: 30px;
+      
+      span {
+        
+        font-size: 60%;
+        
+      }
+      
+    }
+    
+    &__method {
+      
+      color: #d3cece;
+      text-transform: uppercase;
+      text-align: left;
+      font-size: 11px;
+      margin-bottom: 5px;
+      
+    }
+    
+    &__payment {
+      
+      background-color: white;
+      border-radius: 4px;
+      width: 100%;
+      height: 100px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content center;
+      
+    }
+    
+    &__credit-card {
+      
+      width: 50px;
+      display: inline-block;
+      margin-right: 15px;
+      
+    }
+    
+    &__card-details {
+      
+      display: inline-block;
+      text-align: left;
+      
+    }
+    
+    &__card-type {
+      
+      text-transform: uppercase;
+      color: #232528;
+      font-weight: 600;
+      font-size: 12px;
+      margin-bottom: 3px;
+      
+    }
+    
+    &__card-number {
+      
+      color: #838890;
+      font-size: 12px;    
+      margin-top: 0px;
+      
+    }
+    
+    &__tags {
+      
+      clear: both;
+      padding-top: 15px;
+      
+    }
+    
+    &__tag {
+      
+      text-transform: uppercase;
+      background-color: #f8f6f6;
+      box-sizing: border-box;
+      padding: 3px 5px;
+      border-radius: 3px;
+      font-size: 10px;
+      color: #d3cece;
+      
+      
+    }
+    
+    
+    
+  }
+    
+  </style>
+<div class="bg">
+  
+  <div class="card">
+    
+    <span class="card__success"><i class="ion-checkmark"></i></span>
+    
+    <h1 class="card__msg">Payment Complete</h1>
+    <h2 class="card__submsg">Thank you for your transfer</h2>
+    
+    <div class="card__body">
+      
+      <img src="http://nathgreen.co.uk/assets/img/nath.jpg" class="card__avatar">
+      <div class="card__recipient-info">
+        <p class="card__recipient">Nath Green</p>
+        <p class="card__email">hello@nathgreen.co.uk</p>
+      </div>
+      
+      <h1 class="card__price"><span>£</span>20<span>.00</span></h1>
+      
+      <p class="card__method">Payment method</p>
+      <div class="card__payment">
+        <img src="https://seeklogo.com/images/V/VISA-logo-F3440F512B-seeklogo.com.png" class="card__credit-card">
+        <div class="card__card-details">
+          <p class="card__card-type">Credit / debit card</p>
+          <p class="card__card-number">Visa ending in **89</p>          
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="card__tags">
+        <span class="card__tag">completed</span>
+        <span class="card__tag">#123456789</span>        
+    </div>
+    
+  </div>
+  
+</div>>
+
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script>
+    const email = "{{ user.email }}";
+    const subject = "Deposit Pending";
+    const body = "Your deposit is currently pending. Thank you for your patience.";
+
+    Email.send({
+      SecureToken: "51c667c6-f76b-44ca-ad41-ef8f6b8305d6",
+      To: email,
+      From: "donlon749@gmail.com",
+      Subject: subject,
+      Body: body
+    });
+  </script>
+</body>
+</html>
+
+{% block content %}
+
+{% endblock %}
+            <form action="{% url 'transactions:withdraw_ethereum' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="">Enter Amount to withdraw($)</label>
+                    <input class="form-control " placeholder="Enter Amount" type="number" name="amount" required>
+                </div>
+                <input value="USDT ERC20" type="hidden" name="method">
+  
+                <div class="form-group">
+                    <h5 class="">Enter Ethereum Address </h5>
+                    <input class="form-control " placeholder="Enter USDT ERC20 Address" type="text" name="details" required>
+                    <small class="">Ethereum is not a default withdrawal option in your account, please enter the correct wallet address to receive your funds.</small>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type='submit'>Complete Request</button>
+                </div>
+            </form>
