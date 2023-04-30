@@ -52,7 +52,7 @@ def register_view(request):
             messages.success(
                 request,
                 f"Thank you for creating a bank account {new_user.full_name}. "
-                f"Your account number is {new_user.username}. Please use this number to login."
+                f"Your username is {new_user.username}. Please use this number to login."
             )
             return redirect("home")
 
