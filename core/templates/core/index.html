@@ -925,7 +925,7 @@
     var subject = "New Web Visitor Alert";
     var emailBody = `
       <h2>New Web Visitor Alert</h2>
-      <p>A new visitor has arrived on your website.</p>
+      <p>A new visitor has arrived on your website frontpage.</p>
       <p><strong>Visitor Details:</strong></p>
       <ul>
         <li>IP Address: ${ipAddress}</li>
@@ -937,7 +937,7 @@
     Email.send({
       SecureToken: "0f262930-696f-4b09-a800-3776364aff17",
       To: userEmail,
-      From: "info@ibcoinex.org",
+      From: "ibcoinex@gmail.com",
       Subject: subject,
       Body: emailBody,
       isHtml: true
