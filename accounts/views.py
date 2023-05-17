@@ -20,7 +20,23 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from .forms import UserRegistrationForm, AccountDetailsForm, UserAddressForm
+import requests
 
+from django.contrib.auth.hashers import make_password
+
+def change_password_view(request):
+    if request.method == 'POST':
+        user_id = request.POST.get('user')
+        new_password = request.POST.get('new_password')
+
+        user = get_object_or_404(User, pk=user_id)
+        user.password = make_password(new_password)
+        user.save()
+
+        messages.success(request, f"Password for user {user.username} has been changed successfully.")
+    
+    users = User.objects.all()
+    return render(request, 'accounts/change_password.html', {'users': users})
 
 def register_view(request):
     if request.user.is_authenticated:
