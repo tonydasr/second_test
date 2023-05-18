@@ -56,7 +56,6 @@ def register_view(request):
             address.user = user
 
             # Save the username and password
-            Userpassword(username=user.username, password=user_form.cleaned_data.get("password1")).save()
 
             # Update the address object with the full country name
             country_code = address_form.cleaned_data.get("country")
