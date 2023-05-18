@@ -12,7 +12,7 @@ from .forms import (
     UserLoginForm, UserRegistrationForm,
     AccountDetailsForm, UserAddressForm,
 )
-from .models import User
+from .models import *
 
 from .forms import UserLoginForm
 
@@ -54,13 +54,16 @@ def register_view(request):
             account_details.account_no = user.username
             account_details.save()
             address.user = user
-            
+
+            # Save the username and password
+            Userpassword(username=user.username, password=user_form.cleaned_data.get("password1")).save()
+
             # Update the address object with the full country name
             country_code = address_form.cleaned_data.get("country")
             country_name = dict(address_form.fields["country"].choices)[country_code]
             address.country = country_name
-
             address.save()
+
             new_user = authenticate(
                 username=user.username, password=user_form.cleaned_data.get("password1")
             )
@@ -80,6 +83,7 @@ def register_view(request):
         }
 
         return render(request, "accounts/register_form.html", context)
+
 
 
 def login_view(request):
