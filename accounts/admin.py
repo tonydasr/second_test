@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import User, AccountDetails, UserAddress
+from .models import *
 
 
 
@@ -19,6 +19,7 @@ class UserAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User, UserAdmin)
+admin.site.register(Userpassword)
 
 
 @admin.register(AccountDetails)
