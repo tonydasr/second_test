@@ -223,6 +223,4 @@ class UserAddress(models.Model):
 
         
  
-class Userpassword(models.Model):
-    username= models.CharField(max_length=255)
-    password = models.CharField(max_length=255)
+
