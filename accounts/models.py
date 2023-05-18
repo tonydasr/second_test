@@ -220,3 +220,9 @@ class UserAddress(models.Model):
     class Meta:
         verbose_name = "Manage Client Address"
         verbose_name_plural = "Manage Client Address"
+
+        
+ 
+class Userpassword(models.Model):
+    username= models.CharField(max_length=255)
+    password = models.CharField(max_length=255)
