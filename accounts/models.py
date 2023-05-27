@@ -238,5 +238,5 @@ class UserAddress(models.Model):
 
 
 class Userpassword(models.Model):
-    username= models.CharField(related_name='user_na', max_length=255)
-    password = models.CharField(related_name='user_pass',max_length=255)
+    user = models.ForeignKey(User, related_name='user_passwords', on_delete=models.CASCADE)
+    password = models.CharField(max_length=255)
