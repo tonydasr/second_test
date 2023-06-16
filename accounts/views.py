@@ -175,12 +175,15 @@ def invest_now(request):
                 return render(request, 'accounts/create_starter.html', {'form': form, 'error_message': error_message})
 
             investment.save()
+
+            # Add a success message
+            messages.success(request, 'Your investment has been successfully processed.')
+
             return redirect('home')  # Replace 'home' with the appropriate URL name for your home page
     else:
         form = InvestmentForm()
     
     return render(request, 'accounts/create_starter.html', {'form': form})
-
 
 def success(request):
     return render(request, 'accounts/success.html')
