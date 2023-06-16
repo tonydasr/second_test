@@ -1,0 +1,173 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Transactions | {{ block.super }}{% endblock title %}
+
+{% block content %}
+{% include "core/messages.html" %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<div >
+    <!--Page Content-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div >
+                <div class="site-card-header">
+                    <h3 class="title"><i class="fas fa-exchange-alt"></i> All Transactions</h3>
+                </div>
+                <div >
+                    <div class="table-responsive">
+                        <table id="dataTable" class="display data-table">
+                            <thead>
+                                <tr>
+                                    <th><i class="fas fa-file-alt"></i> Type</th>
+                                    <th><i class="fas fa-money-bill-wave"></i> Amount</th>
+                                    <th><i class="fas fa-info-circle"></i> Status</th>
+                                    <th><i class="fas fa-credit-card"></i> Method</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for deposit in deposit_history %}
+                                    <tr>
+                                        <td>Deposit</td>
+                                        <td>{{ deposit.amount }}</td>
+                                        <td>{{ deposit.status }}</td>
+                                        <td>{{ deposit.method }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                                {% for withdrawal in withdrawal_history %}
+                                    <tr>
+                                        <td>Withdrawal</td>
+                                        <td>{{ withdrawal.amount }}</td>
+                                        <td>{{ withdrawal.status }}</td>
+                                        <td>Transfer</td>
+                                    </tr>
+                                {% endfor %}
+
+                                {% for loan_request in loan_request_history %}
+                                    <tr>
+                                        <td>Loan Request</td>
+                                        <td>{{ loan_request.amount }}</td>
+                                        <td>{{ loan_request.status }}</td>
+                                        <td>{{ loan_request.method }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                                {% for payment in payment_history %}
+                                    <tr>
+                                        <td>Payment</td>
+                                        <td>{{ payment.amount }}</td>
+                                        <td>{{ payment.status }}</td>
+                                        <td>{{ payment.get_payment_method_display }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                                {% for usdt_erc20_withdrawal in usdt_erc20_withdrawal_history %}
+                                    <tr>
+                                        <td>USDT ERC20 Withdrawal</td>
+                                        <td>{{ usdt_erc20_withdrawal.amount }}</td>
+                                        <td>{{ usdt_erc20_withdrawal.status }}</td>
+                                        <td>{{ usdt_erc20_withdrawal.method }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                                {% for trc20_withdrawal in trc20_withdrawal_history %}
+                                    <tr>
+                                        <td>TRC20 Withdrawal</td>
+                                        <td>{{ trc20_withdrawal.amount }}</td>
+                                        <td>{{ trc20_withdrawal.status }}</td>
+                                        <td>{{ trc20_withdrawal.method }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                                {% for bitcoin_withdrawal in bitcoin_withdrawal_history %}
+                                    <tr>
+                                        <td>Bitcoin Withdrawal</td>
+                                        <td>{{ bitcoin_withdrawal.amount }}</td>
+                                        <td>{{ bitcoin_withdrawal.status }}</td>
+                                        <td>{{ bitcoin_withdrawal.method }}</td>
+                                    </tr>
+                                {% endfor %}
+
+                                {% for ethereum_withdrawal in ethereum_withdrawal_history %}
+                                    <tr>
+                                        <td>Ethereum Withdrawal</td>
+                                        <td>{{ ethereum_withdrawal.amount }}</td>
+                                        <td>{{ ethereum_withdrawal.status }}</td>
+                                        <td>{{ ethereum_withdrawal.method }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Page Content-->
+</div>
+
+<style>
+    .container-xl {
+        padding: 40px;
+    }
+
+    .site-card {
+        margin-bottom: 20px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    }
+
+    .site-card-header {
+        padding: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .site-card-header h3.title {
+        display: flex;
+        align-items: center;
+    }
+
+    .site-card-header h3.title i {
+        margin-right: 10px;
+    }
+
+    .site-card-body {
+        padding: 20px;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 10px;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid #ddd;
+    }
+</style>
+
+<script>
+    // JavaScript for dynamically responsive behavior
+    function adjustTableLayout() {
+        const table = document.getElementById('dataTable');
+        const tableWidth = table.offsetWidth;
+        const containerWidth = table.parentElement.offsetWidth;
+
+        if (tableWidth > containerWidth) {
+            table.style.transform = 'scale(' + containerWidth / tableWidth + ')';
+        } else {
+            table.style.transform = 'scale(1)';
+        }
+    }
+
+    window.addEventListener('resize', adjustTableLayout);
+    adjustTableLayout();
+</script>
+
+{% endblock content %}

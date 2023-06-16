@@ -1,0 +1,199 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Transactions | {{ block.super }}{% endblock title %}
+
+{% block content %}
+{% include "core/messages.html" %}         <!-- Page content 
+
+-->
+<div >
+    <div >
+        <div >
+            <div >
+                <!--Page Content-->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="site-card">
+                            <div class="site-card-header">
+                                <h3 class="title">Add Money</h3>
+                                <div class="card-header-links">
+                                    <a href="https://ivcoinex.ltd/user/deposit/log" class="card-header-link">Deposit History</a>
+                                </div>
+                            </div>
+                            <div class="site-card-body">
+                                <div class="progress-steps">
+                                    <div class="single-step current">
+                                        <div class="number">01</div>
+                                        <div class="content">
+                                            <h4>Deposit Amount</h4>
+                                            <p>Enter your deposit details</p>
+                                        </div>
+                                    </div>
+                                    <div class="single-step">
+                                        <div class="number">02</div>
+                                        <div class="content">
+                                            <h4>Success</h4>
+                                            <p>Success Your Deposit</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progress-steps-form">
+                                    <form method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-xl-6 col-md-12 mb-3">
+                                                <label for="{{ form.payment_method.id_for_label }}" class="form-label">Payment Method:</label>
+                                                    <div class="form-group">
+                                                      <label for="{{ form.payment_method.id_for_label }}">Payment Method</label>
+                                                      <select name="{{ form.payment_method.name }}" id="{{ form.payment_method.id_for_label }}" class="form-control custom-select">
+                                                        {% for value, label in form.payment_method.field.choices %}
+                                                          <option value="{{ value }}">{{ label }}</option>
+                                                        {% endfor %}
+                                                      </select>
+                                                    </div>
+                                                <div id="payment-address" class="input-info-text charge">
+                                                    <label for="payment-address-input">Payment Address</label>
+                                                    <div class="input-group">
+                                                        <input type="text" id="payment-address-input" class="form-control" readonly>
+                                                        <button type="button" class="btn btn-outline-secondary" onclick="copyPaymentAddress()">Copy</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-md-12">
+                                                <label for="{{ form.amount.id_for_label }}" class="form-label">Enter Amount:</label>
+                                                <div class="input-group">
+                                                    <input type="number" name="{{ form.amount.name }}" id="{{ form.amount.id_for_label }}" class="form-control" oninput="this.value = validateDouble(this.value)" aria-label="Amount" aria-describedby="basic-addon1">
+                                                    <span class="input-group-text" id="basic-addon1">USD</span>
+                                                </div>
+                                                <div class="input-info-text min-max"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row manual-row">
+                                            <div class="form-group">
+                                                <label for="{{ form.proof_of_pay.id_for_label }}">Proof of Payment</label>
+                                                <div class="custom-file">
+                                                    <input type="file" name="{{ form.proof_of_pay.name }}" id="{{ form.proof_of_pay.id_for_label }}" class="custom-file-input">
+                                                    <label class="custom-file-label" for="{{ form.proof_of_pay.id_for_label }}">Choose file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="transaction-list table-responsive">
+                                            <div class="user-panel-title">
+                                                <h3>Review Details:</h3>
+                                            </div>
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><strong>Amount</strong></td>
+                                                        <td><span class="amount"></span> <span class="currency"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Charge</strong></td>
+                                                        <td class="charge2"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Payment Method</strong></td>
+                                                        <td id="logo"><img src="" class="payment-method" alt=""></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Total</strong></td>
+                                                        <td class="total"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="buttons">
+                                            <button type="submit" class="site-btn blue-btn">
+                                                Proceed to Payment<i class="anticon anticon-double-right"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Page Content-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Automatic Popup -->
+
+<!-- /Automatic Popup End -->
+</div>
+<script>
+  function copyPaymentAddress() {
+    var input = document.getElementById("payment-address-input");
+    input.select();
+    document.execCommand("copy");
+    alert("Payment address copied to clipboard!");
+  }
+
+  var paymentMethodSelect = document.getElementById("{{ form.payment_method.id_for_label }}");
+  var paymentAddressDiv = document.getElementById("payment-address");
+  var paymentAddressInput = document.getElementById("payment-address-input");
+  var bitcoinAddress = "{{ request.user.account.bitcoin }}";
+  var ethereumAddress = "{{ request.user.account.ethereum }}";
+  var usdtTrc20Address = "{{ request.user.account.usdt_trc20 }}";
+  var usdtErc20Address = "{{ request.user.account.usdt_erc20 }}";
+  
+  var amountInput = document.getElementById("{{ form.amount.id_for_label }}");
+  var amountSpan = document.querySelector(".amount");
+  var currencySpan = document.querySelector(".currency");
+  var charge2Cell = document.querySelector(".charge2");
+  var paymentMethodImage = document.querySelector(".payment-method");
+  var totalCell = document.querySelector(".total");
+
+  paymentMethodSelect.addEventListener("change", function() {
+    var paymentMethod = paymentMethodSelect.value;
+    console.log("Payment method selected: ", paymentMethod);
+    paymentAddressDiv.classList.toggle("d-none", !paymentMethod || paymentMethod === "CASH");
+
+    if (paymentMethod === "USDT_ERC20") {
+      paymentAddressInput.value = usdtErc20Address;
+      paymentMethodImage.src = "https://topcash.me/images/payment-system/logo43.png?v20210708132643"; // URL for USDT ERC20 logo
+    } else if (paymentMethod === "USDT_TRC20") {
+      paymentAddressInput.value = usdtTrc20Address;
+      paymentMethodImage.src = "https://pro-obmen.ru/img/entity/currency_logo_608.png"; // URL for USDT TRC20 logo
+    } else if (paymentMethod === "ETHEREUM") {
+      paymentAddressInput.value = ethereumAddress;
+      paymentMethodImage.src = "https://logos-download.com/wp-content/uploads/2018/04/Ethereum_logo_classic.png"; // URL for Ethereum logo
+    } else if (paymentMethod === "BITCOIN") {
+      paymentAddressInput.value = bitcoinAddress;
+      paymentMethodImage.src = "https://freepngimg.com/thumb/bitcoin/59526-cryptocurrency-badge-bitcoin-gold-png-file-hd.png"; // URL for Bitcoin logo
+    }
+
+    if (paymentAddressInput.value) {
+      paymentAddressInput.removeAttribute("readonly");
+    } else {
+      paymentAddressInput.setAttribute("readonly", true);
+    }
+    
+    calculateTotal();
+  });
+
+  amountInput.addEventListener("input", function() {
+    var amount = parseFloat(amountInput.value);
+    amountSpan.textContent = amount.toFixed(2);
+    currencySpan.textContent = "USD";
+    calculateTotal();
+  });
+
+  function calculateTotal() {
+    var amount = parseFloat(amountInput.value);
+    var charge = 0.0; // Calculate the charge based on the payment method and amount
+    var total = amount + charge;
+    charge2Cell.textContent = charge.toFixed(2);
+    totalCell.textContent = total.toFixed(2);
+  }
+</script>
+
+
+
+{% endblock content %}
+
+
+
+
