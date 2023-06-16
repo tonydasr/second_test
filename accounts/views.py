@@ -175,7 +175,7 @@ def invest_now(request):
                 return render(request, 'accounts/create_starter.html', {'form': form, 'error_message': error_message})
 
             investment.save()
-            return render(request, 'accounts/success.html')
+            
     else:
         form = InvestmentForm()
     
