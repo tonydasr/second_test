@@ -1,0 +1,213 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Transactions | {{ block.super }}{% endblock title %}
+
+{% block content %}
+{% include "core/messages.html" %}
+</div>
+
+    
+    <div class="row user-cards">
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="fas fa-wallet"></i>
+</div>
+            <div class="content">
+                <h4><span class="count">{{ user.balance }}</span></h4>
+                <p>Main Wallet</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="fas fa-chart-bar"></i>
+</div>
+            <div class="content">
+                <h4><b>$</b><span class="count">{{ user.total_deposit }}</span></h4>
+                <p>Total Deposit</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="fas fa-money-bill-wave-alt"></i>
+</div>
+            <div class="content">
+                <h4><b>$</b><span class="count">{{user.total_investment}}</span></h4>
+                <p>Total Investment</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="fas fa-chart-line"></i>
+</div>
+            <div class="content">
+                <h4><b>$</b><span class="count">{{ user.total_profit }}</span></h4>
+                <p>Total Profit</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="fas fa-exchange-alt"></i>
+</div>
+            <div class="content">
+                <h4><b>$</b><span class="count">0</span></h4>
+                <p>Total Transfer </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="fas fa-money-check-alt"></i>
+</div>
+            <div class="content">
+                <h4><b>$</b><span class="count">{{user.total_withdrawal}}</span></h4>
+                <p>Total Withdraw</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="fas fa-gift"></i>
+</div>
+            <div class="content">
+                <h4><b>$</b><span class="count">{{ user.referral_bonus }}</span>
+                </h4>
+                <p>Referral Bonus</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="fas fa-trophy"></i>
+</div>
+            <div class="content">
+                <h4><b>$</b><span class="count">{{ user.bonus }}</span></h4>
+                <p>Deposit Bonus</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="fas fa-trophy"></i>
+</div>
+            <div class="content">
+                <h4><b>$</b><span class="count">{{ user.investment_bonus }}</span></h4>
+                <p>Investment Bonus</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="fas fa-users"></i>
+</div>
+            <div class="content">
+                <h4 class="count">{{ user.total_refferal }}</h4>
+                <p>Total Referral</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="fas fa-medal"></i>
+</div>
+            <div class="content">
+                <h4 class="count">1</h4>
+                <p>Rank Achieved</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12">
+        <div class="single">
+            <div class="icon"><i class="fas fa-ticket-alt"></i>
+</div>
+            <div class="content">
+                <h4 class="count">{{ user.total_ticket }}</h4>
+                <p>Total Ticket</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <div class="row">
+    <div class="col-xl-12">
+        <div class="site-card">
+            <div class="site-card-header">
+                <h3 class="title">Recent Transactions</h3>
+            </div>
+            <div class="site-card-body table-responsive">
+                <div class="site-datatable">
+                    <table class="display data-table">
+                        <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Transactions ID</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Fee</th>
+                            <th>Status</th>
+                            <th>Gateway</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                                                    <tr>
+                                <td>
+                                    <div class="table-description">
+                                        <div class="icon">
+                                            <i icon-name="backpack
+                                         ">
+                                            </i>
+                                        </div>
+
+
+                                        <div class="description">
+                                            <strong>Signup Bonus                                             </strong>
+                                            <div class="date">Jun 15 2023 06:06</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><strong>TRXQ3SJIPOZ01</strong></td>
+                                <td>
+                                    <div
+                                        class="site-badge primary-bg">Signup bonus</div>
+                                </td>
+
+                                <td><strong
+                                        class="green-color">+5 USD</strong>
+                                </td>
+                                <td><strong>{{ user.signup_bonus }} USD</strong></td>
+                                <td>
+
+
+                                                                            <div class="site-badge success">Success</div>
+                                                                    </td>
+                                <td><strong>System</strong></td>
+                            </tr>
+                        
+
+                                                </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                    <!--Page Content-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Automatic Popup -->
+    
+    <!-- /Automatic Popup End -->
+</div>
+<div id="google_translate_element"></div>
+
+{% endblock content %}

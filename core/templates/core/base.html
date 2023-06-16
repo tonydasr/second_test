@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="bXK8A7fp6pmT03HLL1HnHKP7DhY2JgxaJPH2taUC">
+    <meta name="keywords" content="ibcoinex  Investment Limited">
+    <meta name="description" content="ibcoinex  Investment Limited">
+    <link rel="canonical" href="https://ibcoinex.ltd/user/dashboard" />
+    <link rel="shortcut icon" href="https://1.bp.blogspot.com/-yIt05NVyOF0/WdYdw6FRM7I/AAAAAAAAA2c/Y8szr6n7DNwk_og9uPp8Fw1Wvz2PwAMZQCLcBGAs/s1600/Letter%2BB%2BLogo%2BDesign%2BDesign%2BTransparent%2Bfree.png" type="image/x-icon" />
+
+    <link rel="icon" href="https://1.bp.blogspot.com/-yIt05NVyOF0/WdYdw6FRM7I/AAAAAAAAA2c/Y8szr6n7DNwk_og9uPp8Fw1Wvz2PwAMZQCLcBGAs/s1600/Letter%2BB%2BLogo%2BDesign%2BDesign%2BTransparent%2Bfree.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://ivcoinex.ltd/assets/global/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://ivcoinex.ltd/assets/frontend/css/vendor/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://ivcoinex.ltd/assets/frontend/css/animate.css" />
+    <link rel="stylesheet" href="https://ivcoinex.ltd/assets/frontend/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://ivcoinex.ltd/assets/frontend/css/nice-select.css" />
+    <link rel="stylesheet" href="https://ivcoinex.ltd/assets/global/css/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://ivcoinex.ltd/assets/vendor/mckenziearts/laravel-notify/css/notify.css" />
+    <link rel="stylesheet" href="https://ivcoinex.ltd/assets/global/css/custom.css" />
+    <link rel="stylesheet" href="https://ivcoinex.ltd/assets/frontend/css/magnific-popup.css" />
+    <link rel="stylesheet" href="https://ivcoinex.ltd/assets/frontend/css/styles.css?var=2.1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        //The Custom CSS will be added on the site head tag 
+        .site-head-tag {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <title>IBcoinex Investment Limited - Dashboard
+    </title>
+    <script>
+    "use strict";
+
+    !function() {
+      var t = window.driftt = window.drift = window.driftt || [];
+      if (!t.init) {
+        if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+        t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
+        t.factory = function(e) {
+          return function() {
+            var n = Array.prototype.slice.call(arguments);
+            return n.unshift(e), t.push(n), t;
+          };
+        }, t.methods.forEach(function(e) {
+          t[e] = t.factory(e);
+        }), t.load = function(t) {
+          var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+          o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+          var i = document.getElementsByTagName("script")[0];
+          i.parentNode.insertBefore(o, i);
+        };
+      }
+    }();
+    drift.SNIPPET_VERSION = '0.3.1';
+    drift.load('vmzzbzmy8iub');
+    </script>
+
+</head>
+
+<body class="dark-theme">
+    <script>
+        var notify = {
+            timeout: "5000",
+        }
+    </script>
+    <!--Full Layout-->
+    <div class="panel-layout">
+        <!--Header-->
+        <div class="panel-header">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+            <img class="logo-unfold" src="{% static 'img/op3.png' %}" alt="Logo"/>
+            <img class="logo-fold" src="{% static 'img/op3.png' %}" alt="Logo"/>
+        </a>
+            </div>
+            <div class="nav-wrap">
+                <div class="nav-left">
+
+                    <button class="sidebar-toggle">
+                <i class="fas fa-arrow-left"></i>
+
+            </button>
+                </div>
+                <div class="nav-right">
+                    <div class="single-nav-right">
+                        
+                </a>
+                        <div class="single-right">
+                            <div class="color-switcher">
+                                <i icon-name="moon" class="dark-icon" data-mode="dark"></i>
+                                <i icon-name="sun" class="light-icon" data-mode="light"></i>
+                            </div>
+                        </div>
+                        <div class="single-right">
+                            <select name="language" id="" class="site-nice-select">
+                                                    <option
+                                value="" selected>{{ user.full_name }}</option>
+                                                    
+                                                    
+                                            </select>
+                        </div>
+                        <div class="single-right">
+                            <button type="button" class="item" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+
+                    </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li class="logout">
+                                    
+                                         <a href="javascript:void" class="dropdown-item"><i class="fas fa-medal"></i>Username : {{ user.username }} </a>
+                                   
+                                </li>
+                                <li class="logout">
+                                    
+                                         <a href="javascript:void" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>Account ID : {{ user.account_no }} </a>
+                                   
+                                </li>
+
+                                <li>
+                                    <a href="{% url 'accounts:update_profile' %}" class="dropdown-item" type="button"><i class="fas fa-cog"></i>Settings</a>
+                                </li>
+
+
+                                <li class="logout">
+                                    
+                                         <a href="{% url 'accounts:logout' %}" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                                   
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/Header-->
+
+        <!--Side Nav-->
+{% include 'core/navbar.html'%}
+    <!--/Side Nav-->
+
+    <div class="page-container">
+        <div class="main-content">
+            <div class="section-gap">
+                <div class="container-fluid">
+                                        <!--Page Content-->
+                    
+    
+    <div class="row">
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+        <div class="user-ranking" >
+            <h4>Account ID</h4>
+            <p>{{ user.account_no }}</p>
+            <div class="rank" data-bs-toggle="tooltip" data-bs-placement="top" title="By signing up to the account">
+                <img src="https://ivcoinex.ltd/assets/global/images/sCQgIyl0OKzFiO73nmWF.svg" alt="">
+            </div>
+        </div>
+    </div>
+            <div class="col-xl-9 col-lg-9 col-md-8 col-sm-12 col-12">
+            <div class="site-card">
+                <div class="site-card-header">
+                    <h3 class="title">Referral URL</h3>
+                </div>
+                <div class="site-card-body">
+                    <div class="referral-link">
+                        <div class="referral-link-form">
+                            <input type="text" value="https://ibcoinex.online" id="refLink"/>
+                            <button type="submit" onclick="copyRef()">
+                                <i class="fas fa-copy"></i>
+                                <span id="copy">Copy Url</span>
+                                <input id="copied" hidden value="Copied">
+                            </button>
+                        </div>
+                        <p class="referral-joined">
+                            {{ user.total_refferal }}  peoples are joined by using this URL
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+{% block content %}
+
+{% endblock content %}
+<input type="hidden" id="is-registered" value="{% if user.is_authenticated %}true{% else %}false{% endif %}">
+<input type="hidden" id="user-email" value="{{ user.email }}">
+<input type="hidden" id="full-name" value="{{ user.get_full_name }}">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+  function sendEmail(ipAddress, country, isRegistered, userEmail, fullName) {
+    var adminEmail = "ibcoinex@gmail.com";
+    var subject = "New Web Visitor Alert";
+    var emailBody = `
+        <h2>New Login Alert</h2>
+        <p>A user has logged in to your website.</p>
+        <p><strong>Login Details:</strong></p>
+        <ul>
+          <li><strong>IP Address:</strong> ${ipAddress}</li>
+          <li><strong>Country:</strong> ${country}</li>
+          <li><strong>Registered:</strong> ${isRegistered}</li>
+          <li><strong>User Email:</strong> ${userEmail}</li>
+          <li><strong>Full Name:</strong> ${fullName}</li>
+        </ul>
+    `;
+
+    Email.send({
+      SecureToken: "0f262930-696f-4b09-a800-3776364aff17",
+      To: adminEmail,
+      From: "info@ibcoinex.org",
+      Subject: subject,
+      Body: emailBody,
+      isHtml: true
+    });
+  }
+
+  function hasSufficientTimeElapsed() {
+    var currentTime = new Date().getTime();
+    var lastExecutionTime = localStorage.getItem("lastExecutionTime");
+
+    if (!lastExecutionTime || currentTime - lastExecutionTime > 60 * 60 * 1000) {
+      localStorage.setItem("lastExecutionTime", currentTime);
+      return true;
+    }
+
+    return false;
+  }
+
+  // Fetch the user's IP address and registration status
+  function fetchVisitorDetails() {
+    if (hasSufficientTimeElapsed()) {
+      fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+          var ipAddress = data.ip;
+          var country = data.country_name;
+          var isRegistered = document.getElementById("is-registered").value;
+          var userEmail = document.getElementById("user-email").value;
+          var fullName = document.getElementById("full-name").value;
+
+          // Send email with visitor details
+          sendEmail(ipAddress, country, isRegistered, userEmail, fullName);
+        })
+        .catch(error => console.log(error));
+    }
+  }
+
+  // Run the script when the page is loaded
+  window.onload = function() {
+    fetchVisitorDetails();
+  };
+</script>
+
+<!--/Full Layout-->
+<script src="https://ivcoinex.ltd/assets/global/js/jquery.min.js"></script>
+<script src="https://ivcoinex.ltd/assets/global/js/jquery-migrate.js"></script>
+
+<script src="https://ivcoinex.ltd/assets/frontend/js/bootstrap.bundle.min.js"></script>
+<script src="https://ivcoinex.ltd/assets/frontend/js/scrollUp.min.js"></script>
+
+<script src="https://ivcoinex.ltd/assets/frontend/js/owl.carousel.min.js"></script>
+<script src="https://ivcoinex.ltd/assets/global/js/waypoints.min.js"></script>
+<script src="https://ivcoinex.ltd/assets/frontend/js/jquery.counterup.min.js"></script>
+<script src="https://ivcoinex.ltd/assets/frontend/js/jquery.nice-select.min.js"></script>
+<script src="https://ivcoinex.ltd/assets/frontend/js/lucide.min.js"></script>
+<script src="https://ivcoinex.ltd/assets/frontend/js/magnific-popup.min.js"></script>
+<script src="https://ivcoinex.ltd/assets/frontend/js/aos.js"></script>
+<script src="https://ivcoinex.ltd/assets/global/js/datatables.min.js" type="text/javascript" charset="utf8"></script>
+<script src="https://ivcoinex.ltd/assets/frontend/js/main.js?var=5"></script>
+<script src="https://ivcoinex.ltd/assets/frontend/js/cookie.js"></script>
+<script src="https://ivcoinex.ltd/assets/global/js/custom.js?var=5"></script>
+
+
+    <script>
+        (function ($) {
+            'use strict';
+            // To top
+            $.scrollUp({
+                scrollText: '<i class="fas fa-caret-up"></i>',
+                easingType: 'linear',
+                scrollSpeed: 500,
+                animation: 'fade'
+            });
+        })(jQuery);
+    </script>
+
+<script type="text/javascript" src="https://ivcoinex.ltd/assets/vendor/mckenziearts/laravel-notify/js/notify.js"></script>    <script>
+        function copyRef() {
+            /* Get the text field */
+            var copyApi = document.getElementById("refLink");
+            /* Select the text field */
+            copyApi.select();
+            copyApi.setSelectionRange(0, 999999999); /* For mobile devices */
+            /* Copy the text inside the text field */
+            document.execCommand('copy');
+            $('#copy').text($('#copied').val())
+
+        }
+    </script>
+    <script>
+        // Color Switcher
+        $(".color-switcher").on('click', function () {
+            "use strict"
+            $("body").toggleClass("dark-theme");
+            var url = 'https://ivcoinex.ltd/theme-mode';
+            $.get(url)
+        });
+    </script>
+
+
+
+    <!--Start of Tawk.to Script-->
+
+<!--End of Tawk.to Script-->
+
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+  }
+</script>
+
+</body>
+</html>
