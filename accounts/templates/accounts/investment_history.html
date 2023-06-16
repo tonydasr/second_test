@@ -1,0 +1,79 @@
+
+{% extends 'core/base.html' %}
+
+{% block title %} Transactions | {{ block.super }}{% endblock title %}
+
+{% block content %}
+{% include "core/messages.html" %}
+<style>
+  .page-container {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .container-fluid {
+    height: 100%;
+  }
+
+  .site-card {
+    height: 100%;
+  }
+
+  .site-datatable {
+    height: 100%;
+  }
+
+  #dataTable {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<div >
+  <div class="">
+    <div class="section-gap">
+      <div class="custom-container" style="width: 100%; height: 100%;">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="site-card">
+              <div class="site-card-header">
+                <h3 class="title">All Invested Schemas</h3>
+              </div>
+              <div class="site-card-body">
+                <div class="site-datatable">
+                  <div class="row table-responsive">
+                    <div class="col-xl-12">
+                      <table id="dataTable" class="display data-table">
+                        <thead>
+                          <tr>
+                            <th>Schema</th>
+                            <th>Invest Amount</th>
+                            <th>Wallet</th>
+                            <th>Created At</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for investment in investments %}
+                          <tr>
+                            <td>{{ investment.get_schema_id_display }}</td>
+                            <td>{{ investment.invest_amount }}</td>
+                            <td>{{ investment.wallet }}</td>
+                            <td>{{ investment.created_at }}</td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}
