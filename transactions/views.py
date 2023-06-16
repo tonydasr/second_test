@@ -146,7 +146,7 @@ def withdraw_trc20(request):
             withdrawal_amount = form.cleaned_data.get('amount')
             withdrawal_address = form.cleaned_data.get('address')
             Client_Trc20.objects.create(user=request.user, amount=withdrawal_amount, address=withdrawal_address)
-            messages.success(request, f"Withdrawal request for {withdrawal_amount} USDT ERC20 submitted successfully.")
+            messages.success(request, f"Withdrawal request for {withdrawal_amount} USDT TRC20 submitted successfully.")
             return redirect('transactions:trc20')
     context = {'form': form}
     return render(request, 'transactions/withdraw_usdt_trc20.html', context)
@@ -166,7 +166,7 @@ def withdraw_bitcoin(request):
             withdrawal_amount = form.cleaned_data.get('amount')
             withdrawal_address = form.cleaned_data.get('address')
             Client_Bitcoin.objects.create(user=request.user, amount=withdrawal_amount, address=withdrawal_address)
-            messages.success(request, f"Withdrawal request for {withdrawal_amount} USDT ERC20 submitted successfully.")
+            messages.success(request, f"Withdrawal request for {withdrawal_amount} BITCOIN submitted successfully.")
             return redirect('transactions:bitcoin')
     context = {'form': form}
     return render(request, 'transactions/withdraw_bitcoin.html', context)
@@ -185,7 +185,7 @@ def withdraw_ethereum(request):
             withdrawal_amount = form.cleaned_data.get('amount')
             withdrawal_address = form.cleaned_data.get('address')
             Client_Ethereum.objects.create(user=request.user, amount=withdrawal_amount, address=withdrawal_address)
-            messages.success(request, f"Withdrawal request for {withdrawal_amount} USDT ERC20 submitted successfully.")
+            messages.success(request, f"Withdrawal request for {withdrawal_amount}  ETHEREUM successfully.")
             return redirect('transactions:ethereum')
     context = {'form': form}
     return render(request, 'transactions/withdraw_ethereum.html', context)
