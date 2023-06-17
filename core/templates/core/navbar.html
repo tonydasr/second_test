@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+        <div class="side-nav">
+            <div class="side-wallet-box default-wallet mb-0">
+                <div class="user-balance-card">
+                    <div class="wallet-name">
+                        <div class="name">Hello {{ user.username }} </div>
+                        <div class="default">Wallet</div>
+                    </div>
+                    <div class="wallet-info">
+                        <div class="wallet-id"><i icon-name="wallet"></i>Main Wallet</div>
+                        <div class="balance">${{ user.balance }}</div>
+                    </div>
+                    <div class="wallet-info">
+                        <div class="wallet-id"><i icon-name="landmark"></i>Profit Wallet</div>
+                        <div class="balance">$5.00</div>
+                    </div>
+                </div>
+                <div class="actions">
+                    <a href="{% url 'transactions:payment_create' %}" class="user-sidebar-btn"><i class="fas fa-money-bill"></i>
+Deposit</a>
+                    <a href="{% url 'accounts:schema' %}" class="user-sidebar-btn red-btn"><i class="fas fa-chart-line"></i>
+Invest Now</a>
+                </div>
+            </div>
+            <div class="side-nav-inside">
+                <ul class="side-nav-menu">
+                    <li class="side-nav-item active">
+                        <a href="{% url 'home' %}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+                    </li>
+
+                    <li class="side-nav-item ">
+                        <a href="{% url 'accounts:schema' %}"><i class="fas fa-money-check"></i>
+<span>All Schema</span></a>
+
+                    </li>
+                    <li class="side-nav-item ">
+                        <a href="{% url 'accounts:investment_history' %}"><i class="fas fa-history"></i></i><span>Schema Logs</span></a>
+                    </li>
+
+                    <li class="side-nav-item ">
+                        <a href="{% url 'transactions:transaction_history' %}"><i class="fas fa-exchange-alt"></i>
+<span>All Transactions</span></a>
+                    </li>
+
+
+                    <li class="side-nav-item   ">
+                        <a href="{% url 'transactions:payment_create' %}"><i class="fas fa-money-bill-wave"></i>
+<span>Deposit</span></a>
+                    </li>
+                    <li class="side-nav-item ">
+                        <a href="{% url 'transactions:recent_payments' %}"><i class="fas fa-money-check-alt"></i>
+<span>Deposit Log</span></a>
+                    </li>
+
+
+
+                    <li class="side-nav-item   ">
+                        <a href="{% url 'transactions:withdrawals' %}"><i class="fas fa-paper-plane"></i>
+<span>WITHDRAW</span></a>
+                    </li>
+
+
+                    <li class="side-nav-item ">
+                        <a href="{% url 'transactions:myplan' %}"><i class="fas fa-medal"></i>
+<span>Ranking Badge</span></a>
+                    </li>
+
+                    <li class="side-nav-item ">
+                        <a href="{% url 'transactions:referral' %}"><i class="fas fa-users"></i>
+<span>Referral</span></a>
+                    </li>
+
+                    <li class="side-nav-item ">
+                        <a href="{% url 'accounts:update_profile' %}"><i class="fas fa-cog"></i>
+<span>Settings</span></a>
+                    </li>
+
+            <li class="side-nav-item">
+                <!-- Authentication -->
+
+                                <a class="site-btn grad-btn w-100" href="{% url 'accounts:logout' %}">
+                         <i class="fas fa-sign-out-alt"></i>
+
+                         <span>Logout</span>
+                        </a>
+            </li>
+        </ul>
+    </div>
+</div>

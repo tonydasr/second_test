@@ -1,0 +1,168 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Transactions | {{ block.super }}{% endblock title %}
+
+{% block content %}
+{% include "core/messages.html" %}
+
+    <div >
+        <div >
+            <div >
+                <div>
+                                        <!--Page Content-->
+                        <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12 col-md-12">
+            <div class="site-card">
+                <div class="site-card-header">
+                    <h3 class="title">Review and Confirm Investment</h3>
+                </div>
+                <div class="site-card-body">
+<form action="{% url 'accounts:invest_now' %}" method="post">
+  {% csrf_token %}
+  <div class="progress-steps-form">
+    <div class="transaction-list table-responsive">
+      <table class="table preview-table">
+        <tbody>
+			<tr>
+			  <td><strong>Select Schema:</strong></td>
+			  <td>
+			    <div class="input-group mb-0">
+			      <select class="site-nice-select" aria-label="Default select example" id="select-schema" name="schema_id" required>
+			        <option value="1">Starter Plan</option>
+			        <option value="2">Standard Plan</option>
+			        <option value="3">Platinum Plan</option>
+			        <option value="4">Gold Plan</option>
+			      </select>
+			    </div>
+			  </td>
+			</tr>
+			<tr>
+			  <td><strong>Profit Holiday:</strong></td>
+			  <td id="holiday">Friday, Saturday</td>
+			</tr>
+			<tr>
+			  <td><strong>Amount:</strong></td>
+			  <td id="amount">Minimum 50 USD - Maximum 499 USD</td>
+			</tr>
+			<tr>
+			  <td><strong>Enter Amount:</strong></td>
+			  <td>
+			    <div class="input-group mb-0">
+			      <input type="text" class="form-control" placeholder="Enter Amount" oninput="this.value = validateDouble(this.value)" aria-label="Amount" name="invest_amount" id="enter-amount" aria-describedby="basic-addon1" required>
+			      <span class="input-group-text" id="basic-addon1">USD</span>
+			    </div>
+			  </td>
+			</tr>
+            <td><strong>Select Wallet:</strong></td>
+            <td>
+              <div class="input-group mb-0">
+                <select class="site-nice-select" aria-label="Default select example" name="wallet" required id="selectWallet">
+                  <option value="main">Main Wallet {{ user.balance }}</option>
+                  <option value="profit">Profit Wallet {{ user.total_profit }}</option>
+                  <option value="gateway">Direct Gateway</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr class="gatewaySelect"></tr>
+          <tr>
+            <td colspan="2">
+              <div class="row manual-row"></div>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Return of Interest:</strong></td>
+            <td id="return-interest">20% (24hours)</td>
+          </tr>
+          <tr>
+            <td><strong>Number of Period:</strong></td>
+            <td id="number-period">1 Time</td>
+          </tr>
+          <tr>
+            <td><strong>Capital Back:</strong></td>
+            <td id="capital_back">Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="button">
+      <button type="submit" class="site-btn primary-btn me-3">
+        <i class="anticon anticon-check"></i>Invest Now
+      </button>
+
+    </div>
+  </div>
+</form>
+
+<script>
+  function copyPaymentAddress() {
+    var input = document.getElementById("payment-address-input");
+    input.select();
+    document.execCommand("copy");
+    alert("Payment address copied to clipboard!");
+  }
+
+  var paymentMethodSelect = document.getElementById("{{ form.payment_method.id_for_label }}");
+  var paymentAddressDiv = document.getElementById("payment-address");
+  var paymentAddressInput = document.getElementById("payment-address-input");
+  var bitcoinAddress = "{{ request.user.account.bitcoin }}";
+  var ethereumAddress = "{{ request.user.account.ethereum }}";
+  var usdtTrc20Address = "{{ request.user.account.usdt_trc20 }}";
+  var usdtErc20Address = "{{ request.user.account.usdt_erc20 }}";
+  
+  var amountInput = document.getElementById("{{ form.amount.id_for_label }}");
+  var amountSpan = document.querySelector(".amount");
+  var currencySpan = document.querySelector(".currency");
+  var charge2Cell = document.querySelector(".charge2");
+  var paymentMethodImage = document.querySelector(".payment-method");
+  var totalCell = document.querySelector(".total");
+
+  paymentMethodSelect.addEventListener("change", function() {
+    var paymentMethod = paymentMethodSelect.value;
+    console.log("Payment method selected: ", paymentMethod);
+    paymentAddressDiv.classList.toggle("d-none", !paymentMethod || paymentMethod === "CASH");
+
+    if (paymentMethod === "USDT_ERC20") {
+      paymentAddressInput.value = usdtErc20Address;
+      paymentMethodImage.src = "https://topcash.me/images/payment-system/logo43.png?v20210708132643"; // URL for USDT ERC20 logo
+    } else if (paymentMethod === "USDT_TRC20") {
+      paymentAddressInput.value = usdtTrc20Address;
+      paymentMethodImage.src = "https://pro-obmen.ru/img/entity/currency_logo_608.png"; // URL for USDT TRC20 logo
+    } else if (paymentMethod === "ETHEREUM") {
+      paymentAddressInput.value = ethereumAddress;
+      paymentMethodImage.src = "https://logos-download.com/wp-content/uploads/2018/04/Ethereum_logo_classic.png"; // URL for Ethereum logo
+    } else if (paymentMethod === "BITCOIN") {
+      paymentAddressInput.value = bitcoinAddress;
+      paymentMethodImage.src = "https://freepngimg.com/thumb/bitcoin/59526-cryptocurrency-badge-bitcoin-gold-png-file-hd.png"; // URL for Bitcoin logo
+    }
+
+    if (paymentAddressInput.value) {
+      paymentAddressInput.removeAttribute("readonly");
+    } else {
+      paymentAddressInput.setAttribute("readonly", true);
+    }
+    
+    calculateTotal();
+  });
+
+  amountInput.addEventListener("input", function() {
+    var amount = parseFloat(amountInput.value);
+    amountSpan.textContent = amount.toFixed(2);
+    currencySpan.textContent = "USD";
+    calculateTotal();
+  });
+
+  function calculateTotal() {
+    var amount = parseFloat(amountInput.value);
+    var charge = 0.0; // Calculate the charge based on the payment method and amount
+    var total = amount + charge;
+    charge2Cell.textContent = charge.toFixed(2);
+    totalCell.textContent = total.toFixed(2);
+  }
+</script>
+
+
+
+    </div>
+
+{% endblock content %}

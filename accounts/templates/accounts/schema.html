@@ -1,0 +1,101 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Transactions | {{ block.super }}{% endblock title %}
+
+{% block content %}
+{% include "core/messages.html" %}
+
+    <link rel="icon" href="https://ivcoinex.ltd/assets/global/images/jD005aMazAlOeiJrCqm5.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://ivcoinex.ltd/assets/global/css/fontawesome.min.css" />
+<div >
+    <div >
+        <div >
+            <div>
+                <!--Page Content-->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="site-card">
+                            <div class="site-card-header">
+                                <h2 class="title">All The Schemas</h2>
+                            </div>
+                            <div class="site-card-body">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="single-investment-plan">
+                                            <img class="investment-plan-icon" src="https://ivcoinex.ltd/assets/global/images/D7JO6pA0Wj2vbyp9FJsK.png" alt="" />
+                                            <h3 class="plan-title">Starter Plan</h3>
+                                            <p class="plan-details">24 hours 20%</p>
+                                            <ul>
+                                                <li>Investment <span class="special">$50-$499</span></li>
+                                                <li>Capital Back <span>Yes</span></li>
+                                                <li>Return Type <span>Period</span></li>
+                                                <li>Number of Period <span>1 Time</span></li>
+                                                <li>Profit Withdraw <span>Anytime</span></li>
+                                            </ul>
+                                            <div class="holidays"><span class="star">*</span> Friday, Saturday are Holidays</div>
+                                            <a href="{% url 'accounts:invest_now' %}" class="site-btn grad-btn w-100 centered"><i class="fas fa-level-up-alt"></i></i>Invest Now</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="single-investment-plan">
+                                            <img class="investment-plan-icon" src="https://ivcoinex.ltd/assets/global/images/gn6bCbbpkTCtTWIuPzzP.png" alt="" />
+                                            <h3 class="plan-title">Standard Plan</h3>
+                                            <p class="plan-details">48 hours 50%</p>
+                                            <ul>
+                                                <li>Investment <span class="special">$500-$999</span></li>
+                                                <li>Capital Back <span>Yes</span></li>
+                                                <li>Return Type <span>Period</span></li>
+                                                <li>Number of Period <span>1 Time</span></li>
+                                                <li>Profit Withdraw <span>Anytime</span></li>
+                                            </ul>
+                                            <div class="holidays"><span class="star">*</span> No Profit Holidays</div>
+                                            <a href="{% url 'accounts:invest_now' %}" class="site-btn grad-btn w-100 centered"><i class="fas fa-level-up-alt"></i></i>Invest Now</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="single-investment-plan">
+                                            <img class="investment-plan-icon" src="https://ivcoinex.ltd/assets/global/images/I79d1j4CUeMfRtGHs1nQ.png" alt="" />
+                                            <h3 class="plan-title">Platinum Plan</h3>
+                                            <p class="plan-details">72 hours 80%</p>
+                                            <ul>
+                                                <li>Investment <span class="special">$1000-$4999</span></li>
+                                                <li>Capital Back <span>Yes</span></li>
+                                                <li>Return Type <span>Period</span></li>
+                                                <li>Number of Period <span>1 Time</span></li>
+                                                <li>Profit Withdraw <span>Anytime</span></li>
+                                            </ul>
+                                            <div class="holidays"><span class="star">*</span> No Profit Holidays</div>
+                                            <a href="{% url 'accounts:invest_now' %}" class="site-btn grad-btn w-100 centered"><i class="fas fa-level-up-alt"></i></i>Invest Now</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="single-investment-plan">
+                                            <img class="investment-plan-icon" src="https://ivcoinex.ltd/assets/global/images/7oF6RLsG8iAPmNCCKnC7.png" alt="" />
+                                            <h3 class="plan-title">Gold Plan</h3>
+                                            <p class="plan-details">120 hours 100%</p>
+                                            <ul>
+                                                <li>Investment <span class="special">$5000-$5000000000000</span></li>
+                                                <li>Capital Back <span>Yes</span></li>
+                                                <li>Return Type <span>Period</span></li>
+                                                <li>Number of Period <span>1 Time</span></li>
+                                                <li>Profit Withdraw <span>Anytime</span></li>
+                                            </ul>
+                                            <div class="holidays"><span class="star">*</span> No Profit Holidays</div>
+                                            <a href="{% url 'accounts:invest_now' %}" class="site-btn grad-btn w-100 centered"><i class="fas fa-level-up-alt"></i></i>Invest Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
