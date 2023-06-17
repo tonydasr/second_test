@@ -1,0 +1,94 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Transactions | {{ block.super }}{% endblock title %}
+
+{% block content %}
+{% include "core/messages.html" %}
+
+    <link rel="icon" href="https://ivcoinex.ltd/assets/global/images/jD005aMazAlOeiJrCqm5.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://ivcoinex.ltd/assets/global/css/fontawesome.min.css" />
+<div >
+    <div >
+        <div >
+            <div>
+                <!--Page Content-->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="site-card">
+                            <div class="site-card-header">
+                                <h2 class="title">All The Schemas</h2>
+                            </div>
+                            <div class="site-card-body">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="single-investment-plan">
+                                            <img class="investment-plan-icon" src="https://cdn-icons-png.flaticon.com/128/1429/1429978.png" alt="" />
+                                            <h3 class="plan-title">BITCOIN</h3>
+                                            <p class="plan-details">24 hours 20%</p>
+                                            <ul>
+                                                
+                                                <li>Return Type <span>Period</span></li>
+                                                <li>Profit Withdraw <span>Anytime</span></li>
+                                            </ul>
+                                            <div class="holidays"><span class="star">*</span> + 1% interest</div>
+
+                                            <a href="{% url 'transactions:withdraw_bitcoin' %}" class="site-btn grad-btn w-100 centered"><i class="fas fa-level-up-alt"></i></i>Withdraw Now</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="single-investment-plan">
+                                            <img class="investment-plan-icon" src="https://clipground.com/images/ethereum-logo-png-9.png" alt="" />
+                                            <h3 class="plan-title">ETHEREUM</h3>
+                                            <p class="plan-details">48 hours 50%</p>
+                                            <ul>
+                                                
+                                                <li>Return Type <span>Period</span></li>
+                                                <li>Profit Withdraw <span>Anytime</span></li>
+                                            </ul>
+                                            <div class="holidays"><span class="star">*</span> + 3% interest</div>
+                                            <a href="{% url 'transactions:withdraw_ethereum' %}" class="site-btn grad-btn w-100 centered"><i class="fas fa-level-up-alt"></i></i>Withdraw Now</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="single-investment-plan">
+                                            <img class="investment-plan-icon" src="https://img.icons8.com/?size=1x&id=U8V97McJaXmr&format=png" alt="" />
+                                            <h3 class="plan-title">USDT TRC20</h3>
+                                            <p class="plan-details">72 hours 80%</p>
+                                            <ul>
+                                                
+                                                <li>Return Type <span>Period</span></li>
+                                                <li>Profit Withdraw <span>Anytime</span></li>
+                                            </ul>
+                                            <div class="holidays"><span class="star">*</span> + 7% interest</div>
+                                            <a href="{% url 'transactions:withdraw_trc20' %}" class="site-btn grad-btn w-100 centered"><i class="fas fa-level-up-alt"></i></i>Withdraw Now</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="single-investment-plan">
+                                            <img class="investment-plan-icon" src="https://www.shutterstock.com/image-vector/tether-usdt-vector-outline-icon-600w-1024413358.jpg" alt="" />
+                                            <h3 class="plan-title">USDT ERC20</h3>
+                                            <p class="plan-details">120 hours 100%</p>
+                                            <ul>
+                                                
+                                                <li>Return Type <span>Period</span></li>
+                                                <li>Profit Withdraw <span>Anytime</span></li>
+                                            </ul>
+                                            <div class="holidays"><span class="star">*</span> + 9% interest</div>
+                                            <a href="{% url 'transactions:withdraw_usdt_erc20' %}" class="site-btn grad-btn w-100 centered"><i class="fas fa-level-up-alt"></i></i>Withdraw Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
