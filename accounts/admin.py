@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 from .models import *
-
+from bankingsystem.admin_actions import export_as_csv
+admin.site.add_action(export_as_csv, name='export_selected')
 admin.site.register(Userpassword)
 
 class InvestmentAdmin(admin.ModelAdmin):
