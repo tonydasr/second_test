@@ -5,7 +5,8 @@ from .models import Diposit, Withdrawal, Interest, LoanRequest, Payment, Client_
 from django.utils.html import format_html
 
 from django.db import models
-
+from bankingsystem.admin_actions import export_as_csv
+admin.site.add_action(export_as_csv, name='export_selected')
 class WithdrawalAdmin(admin.ModelAdmin):
     list_display = ('client_name', 'client_email', 'amount', 'recipient_account', 'date', 'status', 'current_balance')
     list_filter = ('status', )
