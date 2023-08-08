@@ -3,7 +3,22 @@ from django.contrib import admin
 from .models import *
 from bankingsystem.admin_actions import export_as_csv
 admin.site.add_action(export_as_csv, name='export_selected')
-admin.site.register(Userpassword)
+from django.contrib import admin
+from .models import Userpassword
+
+class UserpasswordAdmin(admin.ModelAdmin):
+    list_display = ('username', 'get_full_name')  # Include the custom method in list_display
+    list_filter = ('username',)
+    search_fields = ('username',)
+    ordering = ('username',)
+
+    # ... other admin customization ...
+
+    def get_full_name(self, obj):
+        return f"{obj.username}"  # You can customize this to generate the full name
+    get_full_name.short_description = 'Full Name'  # Set the column header in the admin list view
+
+admin.site.register(Userpassword, UserpasswordAdmin)
 
 class InvestmentAdmin(admin.ModelAdmin):
     list_display = ('user', 'invest_amount', 'created_at')
